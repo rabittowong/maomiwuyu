@@ -1,0 +1,41 @@
+<div id="dashboard">
+  <div class="container-header"></div>
+
+  <div class="dashboard-container">
+    <div class="card">
+      <div class="card-header">
+        <h5>你的資訊</h5>
+      </div>
+
+      <div class="card-body">
+        <div *ngIf="form.data.user" class="dashboard-form">
+          <div class="form-group">
+            <div class="avatar-container">
+              <img *ngIf="form.data.user.avatar" class="avatar" [src]="form.data.user.avatar" alt="avatar">
+              <div *ngIf="!form.data.user.avatar" class="avatar default-avatar"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="characterName">角色名稱</label>
+            <input [disabled]="true" [ngModel]="form.data.user.characterName" type="text" class="form-control" id="characterName" name="characterName">
+          </div>
+
+          <div class="form-group">
+            <label for="email">電郵</label>
+            <input [disabled]="true" [ngModel]="form.data.user.email" type="text" class="form-control" id="email" name="email">
+          </div>
+
+          <div class="form-group">
+            <label for="lastLoginDate">最後登入時間</label>
+            <input [disabled]="true" [ngModel]="form.data.user.lastLoginDate | datex: 'YYYY-MM-DD HH:mm'" type="text" class="form-control" id="lastLoginDate" name="lastLoginDate">
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button (click)="authenticationService.logout()" type="button" class="btn btn-dark-orange">登出</button>
+      </div>
+    </div>
+  </div>
+</div>

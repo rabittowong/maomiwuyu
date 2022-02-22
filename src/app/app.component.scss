@@ -1,0 +1,11 @@
+@import './../assets/scss/variables';
+@import './../assets/scss/mixin';
+
+.main {
+  min-height: calc(100vh - 120px);
+  border-bottom: 1px solid $white-100;
+
+  @include screen-md-under {
+    min-height: calc(100vh - 255px);
+  }
+}

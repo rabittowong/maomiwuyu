@@ -1,0 +1,51 @@
+@import 'src/assets/scss/variables';
+@import 'src/assets/scss/mixin';
+
+#footer {
+  height: 60px;
+  background: $dark-black-900;
+  color: $white-100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include screen-md-under {
+    height: 150px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 45px;
+
+  @include screen-md-under {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.contact-icon-container {
+  @include screen-md-under {
+    margin-bottom: 1rem;
+  }
+}
+
+.contact-icon {
+  font-size: 20px;
+  margin: 0 6px;
+  cursor: pointer;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.copyright div:first-child {
+  margin-right: 3px;
+
+  @include screen-md-under {
+    margin-right: 0;
+  }
+}

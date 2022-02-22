@@ -1,0 +1,24 @@
+<div id="announcement">
+  <div class="container-header"></div>
+
+  <div class="container">
+    <!--announcement section-->
+    <div class="row margin-sm">
+      <div class="col-12">
+        <div class="created-by">{{form.data.announcement?.createdBy}} 發表於 {{form.data.announcement?.createdDate | datex: 'YYYY-MM-DD HH:mm'}}</div>
+      </div>
+    </div>
+
+    <div class="row margin-sm">
+      <div class="col-12">
+        <div class="title">{{form.data.announcement?.title}}</div>
+      </div>
+    </div>
+
+    <div class="row margin-lg">
+      <div class="col-12">
+        <div [innerHTML]="form.data.announcementContent?.content"></div>
+      </div>
+    </div>
+  </div>
+</div>

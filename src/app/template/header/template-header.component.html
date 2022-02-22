@@ -1,0 +1,17 @@
+<div id="header" [ngClass]="{'dark': !isHomeBackground()}">
+  <div class="container">
+    <div class="title" [routerLink]="['/']">貓咪物語</div>
+    <ul class="nav-bar">
+      <li [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/']">主頁</li>
+      <li [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/about-us/']">關於我們</li>
+      <li [routerLinkActive]="'active'" [routerLink]="['/announcement/']">公告</li>
+      <li [routerLinkActive]="'active'" [routerLink]="['/event/']">活動</li>
+      <li [routerLinkActive]="'active'" (click)="onLogin()">
+        <div class="avatar-container">
+          <div class="avatar default-avatar"></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div id="header-clear"></div>

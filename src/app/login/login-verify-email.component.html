@@ -1,0 +1,18 @@
+<div id="login">
+  <div class="container-header"></div>
+
+  <div class="login-container">
+    <div class="card">
+      <div class="card-header">
+        <h5>驗證電郵</h5>
+      </div>
+
+      <div class="card-body">
+        <div class="registration-form">
+          <div *ngIf="form.ui.mode == 'checking'">驗證信已發送到你的郵箱，點選信中的連結，確認訊息便會出現在網頁瀏覽器中。</div>
+          <div *ngIf="form.ui.mode == 'verified'">驗證成功，5秒後轉跳至帳號主頁。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

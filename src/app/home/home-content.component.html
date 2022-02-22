@@ -1,0 +1,96 @@
+<div id="home">
+  <div id="caption-background"></div>
+
+  <div class="container">
+    <!--caption section-->
+    <div class="caption-title">猫<br>咪<br>物<br>语</div>
+
+    <!--intro section-->
+    <div class="row margin-lg">
+      <div class="col-12 col-md-6">
+        <div class="intro-container">
+          <span class="intro-title">貓咪物語</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <p>現的說法開頭，安全猶豫麼不有三我家，對不裡溫暖任務面對了了這樣第一個，天下事活的是不是突然覺，的事情的耳打得比較，天我天為什麼現在都。</p>
+        <p>但是正常看我覺得可搞可是我完全，麼律師有人發現機這樣摩心理別人，天全部都條我想是太好為什，子一風亂至少我了一個掛會永句。天好我要，開其實嗚嗚嗚還可以才可以，長的居搬沒魔法條應該很，誇張覺得增加神奇有不類的。</p>
+      </div>
+    </div>
+
+    <!--motto section-->
+    <div class="row margin-lg">
+      <div class="col-12">
+        <div class="motto-container">
+          <span class="motto-title">這幾天算大家，特別都人好之後，跟自己怎麼歡小都那希望他。</span>
+          <div class="motto-author">伊級可</div>
+        </div>
+      </div>
+    </div>
+
+    <!--feature section-->
+    <div class="row margin-lg">
+      <div class="col-12 col-md-4">
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-user-friends"></i></div>
+          <p>送真的是點不，了我謝謝你晚安那時候去就，是角色時候的會有給經很其實，定起來人們好笑的個性較。</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-dice"></i></div>
+          <p>有一為了好喜也太好，菜是一日本符注行，的同顏好好我只是，收真的被一嗚一下。</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fab fa-discord"></i></div>
+          <p>兩個你說以直接，畫風也知道狀態快點東西我，完就知道要，覺得這我我，該說最近有部分。</p>
+        </div>
+      </div>
+    </div>
+
+    <!--registration section-->
+    <div class="d-block d-md-none row margin-md">
+      <div class="col-12">
+        <div class="text-center">
+          <span class="underlined-title">加入我們</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-lg">
+      <div class="d-none d-md-block col-6">
+        <span class="underlined-title">加入我們</span>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <form #registrationForm="ngForm">
+          <div class="registration-form">
+            <div class="form-group">
+              <label class="required" for="gameName">遊戲</label>
+              <select [disabled]="form.ui.submitted" [(ngModel)]="form.data.gameRegistration.gameId" class="form-control" [ngClass]="{ 'is-invalid': (form.ui.proceeded && !form.data.gameRegistration.gameId) }" id="gameName" name="gameName" [required]="true">
+                <option *ngFor="let op of form.options.gameList" [ngValue]="op.id">{{op.name}}</option>
+              </select>
+              <div class="invalid-feedback">請選擇遊戲</div>
+            </div>
+
+            <div class="form-group">
+              <label class="required" for="characterName">角色名稱</label>
+              <input [disabled]="form.ui.submitted" [(ngModel)]="form.data.gameRegistration.characterName" type="text" class="form-control" [ngClass]="{ 'is-invalid': (form.ui.proceeded && !form.data.gameRegistration.characterName) }" id="characterName" name="characterName" [required]="true">
+              <div class="invalid-feedback">請輸入角色名稱</div>
+            </div>
+
+            <div class="form-group d-flex justify-content-end">
+              <button [disabled]="form.ui.submitted" (click)="onProceed(registrationForm.valid)" type="submit" class="btn btn-dark-orange">送出</button>
+            </div>
+          </div>
+        </form>
+
+        <div *ngIf="form.ui.submitted" class="alert alert-success" role="alert">感謝你的申請！</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<div id="event">
+  <div class="container-header"></div>
+
+  <div class="container">
+    <!--event section-->
+    <div class="row margin-sm">
+      <div class="col-12">
+        <div class="created-by">{{form.data.event?.createdBy}} 發表於 {{form.data.event?.createdDate | datex: 'YYYY-MM-DD HH:mm'}}</div>
+      </div>
+    </div>
+
+    <div class="row margin-sm">
+      <div class="col-12">
+        <div class="name">{{form.data.event?.name}}</div>
+      </div>
+    </div>
+
+
+    <div class="row margin-sm">
+      <div class="col-12">
+        <div class="event-item">
+          <div>活動日期：{{(form.data.event?.eventDate | datex: 'YYYY-MM-DD') || '無'}}</div>
+          <div>截止報名日期：{{(form.data.event?.registrationEndDate | datex: 'YYYY-MM-DD') || '無'}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-md">
+      <div class="col-12">
+        <div [innerHTML]="form.data.eventContent?.content"></div>
+      </div>
+    </div>
+
+    <div class="row margin-sm">
+      <div class="col-12">
+        <div class="d-flex justify-content-end">
+          <button [disabled]="isRegistrationEnd()" type="submit" class="btn btn-dark-orange" (click)="onShowEventRegistrationModal()">點我申請</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-lg">
+      <div class="col-12">
+        <table class="table">
+          <thead class="thead-dark-orange">
+            <tr>
+              <th style="width: 40px;"></th>
+              <th>參加名單</th>
+              <th class="d-none d-md-table-cell" style="width: 180px;">申請時間</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let registration of form.data.eventRegistrationList" class="registration-item">
+              <td><i class="far fa-user"></i></td>
+              <td>{{registration.characterName}}</td>
+              <td class="d-none d-md-table-cell">{{registration.createdDate | datex: 'YYYY-MM-DD HH:mm'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--event registration modal-->
+<div bsModal #eventRegistrationModal="bs-modal" class="modal fade" tabindex="-1" aria-labelledby="eventRegistrationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form #registrationForm="ngForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="eventRegistrationModalLabel">活動報名</h5>
+          <button type="button" class="close" (click)="eventRegistrationModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="registration-form">
+            <div class="form-group">
+              <label class="required" for="eventName">主題</label>
+              <input [disabled]="true" [(ngModel)]="form.modal.eventRegistration.eventName" type="text" class="form-control" [ngClass]="{ 'is-invalid': (form.ui.proceeded && !form.modal.eventRegistration.eventName) }" id="eventName" name="eventName" [required]="true">
+              <div class="invalid-feedback">請輸入主題</div>
+            </div>
+
+            <div class="form-group">
+              <label class="required" for="characterName">角色名稱</label>
+              <input [disabled]="form.ui.submitted" [(ngModel)]="form.modal.eventRegistration.characterName" type="text" class="form-control" [ngClass]="{ 'is-invalid': (form.ui.proceeded && !form.modal.eventRegistration.characterName) }" id="characterName" name="characterName" [required]="true">
+              <div class="invalid-feedback">請輸入角色名稱</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button [disabled]="form.ui.submitted" (click)="onProceed(registrationForm.valid)" type="button" class="btn btn-dark-orange">送出</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

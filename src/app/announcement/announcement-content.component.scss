@@ -1,0 +1,24 @@
+@import './../../assets/scss/variables';
+@import './../../assets/scss/mixin';
+
+.announcement-item {
+  cursor: pointer;
+}
+
+.new {
+  position: relative;
+  top: -5px;
+  left: -2px;
+  font-size: 10px;
+  color: $red-600;
+}
+
+.title {
+  @include screen-md-under {
+    margin-bottom: 7px;
+  }
+}
+
+.created-date {
+  font-size: 12px;
+}

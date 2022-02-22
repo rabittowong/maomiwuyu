@@ -1,0 +1,55 @@
+<div id="about-us">
+  <div class="container-header"></div>
+
+  <div class="container">
+    <!--operator section-->
+    <div class="row margin-md">
+      <div class="col-12">
+        <div class="text-center">
+          <span class="underlined-title">管理層</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-lg">
+      <div *ngFor="let operator of form.data.operatorList" class="col-12 col-md-4">
+        <div class="operator-item">
+          <div class="operator-icon"></div>
+          <div class="operator-title">{{operator.characterName}}</div>
+          <p>{{operator.description}}</p>
+        </div>
+      </div>
+    </div>
+
+    <!--game section-->
+    <div class="row margin-md">
+      <div class="col-12">
+        <div class="text-center">
+          <span class="underlined-title">參與遊戲</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="margin-lg">
+      <div *ngFor="let game of form.data.gameList" class="row margin-md">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-12">
+              <div class="game-title">{{game.name}}</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="game-img">{{game.name}}</div>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <div class="game-description">{{game.description}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

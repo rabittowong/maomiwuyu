@@ -1,0 +1,48 @@
+@import './../../assets/scss/variables';
+@import './../../assets/scss/mixin';
+
+.operator-icon {
+  margin-bottom: 30px;
+  width: 120px;
+  height: 120px;
+  background-color: $dark-orange-200;
+  border: 1px solid $dark-orange-900;
+  border-radius: 50%;
+
+  @include screen-md-under {
+    margin-bottom: 15px;
+  }
+}
+
+.operator-title {
+  margin-bottom: 1rem;
+  font-size: 24px;
+  color: $dark-orange-900;
+}
+
+.operator-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 30px;
+}
+
+.game-title {
+  font-size: 24px;
+  color: $dark-orange-900;
+  margin-bottom: 1rem;
+}
+
+.game-img {
+  height: 240px;
+  background: $dark-orange-200;
+  font-size: 32px;
+  color: $dark-orange-900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include screen-md-under {
+    height: 180px;
+  }
+}

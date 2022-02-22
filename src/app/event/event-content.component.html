@@ -1,0 +1,64 @@
+<div id="event">
+  <div class="container-header"></div>
+
+  <div class="container">
+    <!--event section-->
+    <div class="row margin-md">
+      <div class="col-12">
+        <div class="text-center">
+          <span #eventTitle class="underlined-title">活動</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-sm">
+      <div class="col-12">
+        <div class="d-flex justify-content-end">
+          <button *ngIf="form.ui.loggedIn" [routerLink]="['/event/create/']" type="submit" class="btn btn-dark-orange">新增活動</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-sm">
+      <div class="col-12">
+        <table class="table">
+          <thead class="thead-dark-orange">
+            <tr>
+              <th style="width: 40px;"></th>
+              <th>主題</th>
+              <th class="d-none d-md-table-cell" style="width: 140px;">作者</th>
+              <th class="d-none d-md-table-cell" style="width: 80px;">人數</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let event of form.data.slicedEventList" (click)="onViewEvent(event.id)" class="event-item">
+              <td>
+                <i class="far fa-calendar"></i>
+                <div *ngIf="isNew(event.createdDate)" class="new">new</div>
+              </td>
+              <td>
+                <div class="name">{{event.name}}</div>
+                <div class="d-none d-md-block event-date">{{event.eventDate | datex: 'YYYY-MM-DD'}}</div>
+                <div class="d-block d-md-none created-date">{{event.createdBy}} 發表於 {{event.createdDate | datex: 'YYYY-MM-DD HH:mm'}}</div>
+                <div class="d-block d-md-none event-date">活動日期：{{(event.eventDate | datex: 'YYYY-MM-DD') || '無'}}</div>
+              </td>
+              <td class="d-none d-md-table-cell">
+                <div>{{event.createdBy}}</div>
+                <div class="created-date">{{event.createdDate | datex: 'YYYY-MM-DD HH:mm'}}</div>
+              </td>
+              <td class="d-none d-md-table-cell">{{event.registrationCount}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row margin-lg">
+      <div class="col-12">
+        <div class="d-flex justify-content-end">
+          <pagination class="pagination-dark-orange" [totalItems]="form.data.eventList.length" [itemsPerPage]="form.options.itemsPerPage" [directionLinks]="false" [boundaryLinks]="true" [firstText]="'&laquo;'" [lastText]="'&raquo;'" (pageChanged)="onPageChanged($event)"></pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

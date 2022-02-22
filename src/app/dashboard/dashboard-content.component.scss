@@ -1,0 +1,42 @@
+@import './../../assets/scss/variables';
+
+.dashboard-container {
+  width: calc(100% - 60px);
+  max-width: 360px;
+  margin: 0 auto 60px auto;
+
+  .card {
+    border-radius: 0;
+    padding: 30px;
+  }
+
+  .card-header {
+    border: none;
+    background-color: white;
+    text-align: center;
+  }
+
+  .card-footer {
+    border: none;
+    background-color: white;
+    text-align: right;
+  }
+}
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: -10px;
+
+  .avatar {
+    height: 96px;
+    width: 96px;
+    border-radius: 25%;
+  }
+
+  .default-avatar {
+    background: url('./../../assets/img/default-avatar.png') no-repeat 50% 50%, $dark-white-100;
+    background-size: contain;
+  }
+}

@@ -1,0 +1,28 @@
+@import './../../assets/scss/variables';
+@import './../../assets/scss/mixin';
+
+.event-item {
+  cursor: pointer;
+}
+
+.new {
+  position: relative;
+  top: -5px;
+  left: -2px;
+  font-size: 10px;
+  color: $red-600;
+}
+
+.name {
+  @include screen-md-under {
+    margin-bottom: 7px;
+  }
+}
+
+.event-date {
+  font-size: 12px;
+}
+
+.created-date {
+  font-size: 12px;
+}

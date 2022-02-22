@@ -1,0 +1,56 @@
+<div id="event">
+  <div class="container-header"></div>
+
+  <div class="container">
+    <!--event section-->
+    <div class="row margin-md">
+      <div class="col-12">
+        <div class="text-center">
+          <span class="underlined-title">新增活動</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-lg">
+      <div class="col-12 col-md-8 offset-md-2">
+        <form #eventForm="ngForm">
+          <div class="registration-form">
+            <div class="form-group">
+              <label class="required" for="name">主題</label>
+              <input [disabled]="form.ui.submitted" [(ngModel)]="form.data.event.name" class="form-control" [ngClass]="{ 'is-invalid': (form.ui.proceeded && !form.data.event.name) }" id="name" name="name" [required]="true">
+              <div class="invalid-feedback">請輸入主題</div>
+            </div>
+
+            <div class="form-group">
+              <label class="required" for="createdBy">作者</label>
+              <input [disabled]="form.ui.submitted" [(ngModel)]="form.data.event.createdBy" class="form-control" [ngClass]="{ 'is-invalid': (form.ui.proceeded && !form.data.event.createdBy) }" id="createdBy" name="createdBy" [required]="true">
+              <div class="invalid-feedback">請輸入作者</div>
+            </div>
+
+            <div class="form-group">
+              <label for="eventDate">活動日期</label>
+              <input bsDatepicker [disabled]="form.ui.submitted" [(ngModel)]="form.data.event.eventDate" class="form-control" id="eventDate" name="eventDate" [required]="false">
+              <div class="invalid-feedback">請輸入活動日期</div>
+            </div>
+
+            <div class="form-group">
+              <label for="registrationEndDate">截止報名日期</label>
+              <input bsDatepicker [disabled]="form.ui.submitted" [(ngModel)]="form.data.event.registrationEndDate" class="form-control" id="registrationEndDate" name="registrationEndDate" [required]="false">
+              <div class="invalid-feedback">請輸入截止報名日期</div>
+            </div>
+
+            <div class="form-group">
+              <label class="required" for="content">內容</label>
+              <textarea [disabled]="form.ui.submitted" [ngModel]="replaceHtmlNewLine(form.data.eventContent.content)" (ngModelChange)="form.data.eventContent.content = replaceRegexNewLine($event)" class="form-control" [ngClass]="{ 'is-invalid': (form.ui.proceeded && !form.data.eventContent.content) }" id="content" name="content" [required]="true"></textarea>
+              <div class="invalid-feedback">請輸入內容</div>
+            </div>
+
+            <div class="form-group d-flex justify-content-end">
+              <button [disabled]="form.ui.submitted" (click)="onProceed(eventForm.valid)" type="submit" class="btn btn-dark-orange">送出</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

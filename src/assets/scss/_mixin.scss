@@ -1,0 +1,34 @@
+@mixin screen-sm-under {
+  @media only screen and (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin screen-md-under {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin screen-lg-under {
+  @media only screen and (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin screen-xl-under {
+  @media only screen and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin max-line-ellipsis($maxLine, $lineHeight, $maxHeight) {
+  max-height: $maxHeight;
+  line-height: $lineHeight;
+  white-space: initial;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $maxLine;
+  -webkit-box-orient: vertical;
+}

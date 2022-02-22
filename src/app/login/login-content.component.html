@@ -1,0 +1,45 @@
+<div id="login">
+  <div class="container-header"></div>
+
+  <div class="login-container">
+    <div class="card">
+      <form #loginForm="ngForm">
+        <div class="card-header">
+          <h5>登入</h5>
+        </div>
+
+        <div class="card-body">
+          <div class="registration-form">
+            <div class="form-group">
+              <label class="required" for="email">電郵</label>
+              <input [disabled]="form.ui.submitted" [(ngModel)]="form.data.email" type="text" class="form-control" [ngClass]="{ 'is-invalid': (form.ui.proceeded && !form.data.email) }" id="email" name="email" [required]="true">
+              <div class="invalid-feedback">請輸入電郵</div>
+            </div>
+
+            <div class="form-group">
+              <label class="required" for="password">密碼</label>
+              <input [disabled]="form.ui.submitted" [(ngModel)]="form.data.password" type="password" class="form-control" [ngClass]="{ 'is-invalid': (form.ui.proceeded && !form.data.password) }" id="password" name="password" [required]="true">
+              <div class="invalid-feedback">請輸入密碼</div>
+            </div>
+
+            <div class="form-group">
+              <div class="google-container" (click)="onLoginWithGoogle()">
+                <div class="google-icon"></div>
+                <div class="google-text">以Google帳號登入</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="forget-password" (click)="onResetPassword()">忘記密碼?</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <button [disabled]="form.ui.submitted" [routerLink]="['/login/register/']" type="button" class="btn btn-outline-dark-orange">註冊</button>
+          <button [disabled]="form.ui.submitted" (click)="onProceed(loginForm.valid)" type="button" class="btn btn-dark-orange">登入</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

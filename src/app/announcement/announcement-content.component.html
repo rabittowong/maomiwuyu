@@ -1,0 +1,62 @@
+<div id="announcement">
+  <div class="container-header"></div>
+
+  <div class="container">
+    <!--announcement section-->
+    <div class="row margin-md">
+      <div class="col-12">
+        <div class="text-center">
+          <span #announcementTitle class="underlined-title">公告</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-sm">
+      <div class="col-12">
+        <div class="d-flex justify-content-end">
+          <button *ngIf="form.ui.loggedIn" [routerLink]="['/announcement/create/']" type="submit" class="btn btn-dark-orange">新增公告</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-sm">
+      <div class="col-12">
+        <table class="table">
+          <thead class="thead-dark-orange">
+            <tr>
+              <th style="width: 40px;"></th>
+              <th>主題</th>
+              <th class="d-none d-md-table-cell" style="width: 140px;">作者</th>
+              <th class="d-none d-md-table-cell" style="width: 80px;">查看</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let announcement of form.data.slicedAnnouncementList" (click)="onViewAnnouncement(announcement.id)" class="announcement-item">
+              <td>
+                <i class="far fa-sticky-note"></i>
+                <div *ngIf="isNew(announcement.createdDate)" class="new">new</div>
+              </td>
+              <td>
+                <div class="title">{{announcement.title}}</div>
+                <div class="d-block d-md-none created-date">{{announcement.createdBy}} 發表於 {{announcement.createdDate | datex: 'YYYY-MM-DD HH:mm'}}</div>
+              </td>
+              <td class="d-none d-md-table-cell">
+                <div>{{announcement.createdBy}}</div>
+                <div class="created-date">{{announcement.createdDate | datex: 'YYYY-MM-DD HH:mm'}}</div>
+              </td>
+              <td class="d-none d-md-table-cell">{{announcement.readCount}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row margin-lg">
+      <div class="col-12">
+        <div class="d-flex justify-content-end">
+          <pagination class="pagination-dark-orange" [totalItems]="form.data.announcementList.length" [itemsPerPage]="form.options.itemsPerPage" [directionLinks]="false" [boundaryLinks]="true" [firstText]="'&laquo;'" [lastText]="'&raquo;'" (pageChanged)="onPageChanged($event)"></pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
