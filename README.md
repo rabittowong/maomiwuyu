@@ -12,7 +12,7 @@ This website demonstrates a guild page with the following function:
 3. Show guild announcements
 4. Create guild events and list participants
 
-## Development server
+## Development Server
 
 Run `git clone` to clone the project to local environment. Run `npm install` to install the project dependencies.
 Run `ng run start` to start a development server.
